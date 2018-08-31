@@ -60,39 +60,65 @@ public class Practica2 {
             ////id actua en el que va la cuenta
             int id = rep.size();
 
-            int opt;
+            int opt,idc, s;
+            String n1, p,m,c;
+            
             while (true) {
                 System.out.println("Elige una opcion:\n1. Captura.\n2. Modifica.\n3. Elimina.\n4. Salir.");
                 opt = sc.nextInt();
                 switch (opt) {
                     case 1: {
                         System.out.println("Favor de llenar el siguiente formulario para agregar tu representante");
-                            System.out.println("Cual es el nombre sin apellidos del representante ");
-                                n = sc.nextLine();
-                         if(!esNumero(n)){
-                             System.out.println("No se aceptan numeros");
-                         }else{
+                            System.out.println("Cual es el nombre sin apellidos del representante "); 
+                                n1 = sc.nextLine();
+                                if (esNumero(n1)){
+                                    System.out.println("Verifique que el nombre no tenga un caracter numerico");
+                                    break;                                    
+                                } 
                             System.out.println("Apellido Paterno del representante");
-                            p = sc.nextLine();}
-                            
-                            System.out.println("Apellido Materno del representante");
-                            m = sc.nextLine();
-                            System.out.println("Calidad del represetante");
-                            c = sc.nextLine();
-                            System.out.println("Identificador de casilla");
-                            idc = sc.nextInt();
-                            for(Casilla cas : casillas){
-                            if(cas.getId()==idc){
-                               System.out.println("Seccion");
-                                s = sc.nextInt();
-                                 
-                            }
+                                p = sc.nextLine();
+                                if (esNumero(p)){
+                                    System.out.println("Verifique que el nombre no tenga un caracter numerico");
+                                    break;                                    
                                 }
-                             System.out.println("No existe la casilla");
-                            rep.add(new RPreliminar(n,p,m,c,idc,s));
+                            System.out.println("Apellido Materno del representante");
+                                m = sc.nextLine();
+                                if (esNumero(m)){
+                                    System.out.println("Verifique que el nombre no tenga un caracter numerico");
+                                    break;                                    
+                                }
+                            System.out.println("Calidad del represetante");
+                                c = sc.nextLine();
+                                if (esNumero(c)){
+                                    System.out.println("Verifique que el nombre no tenga un caracter numerico");
+                                    break;                                    
+                                }
+                            System.out.println("Identificador de casilla");
+                               try {
+                                    idc = sc.nextInt();
+                                    for(Casilla cas : casillas){
+                                      if(cas.getId()!=idc){ 
+                                         break;
+                                        }
+                                    }
+//                                   System.out.println("No existe esa casilla"); 
+                                } catch (NumberFormatException nf) {
+                                    System.out.println("Solo se aceptan numeros.");
+                                    continue;
+                                }
+                            System.out.println("Seccion");
+                                try {
+                                    s = sc.nextInt();
+                                } catch (NumberFormatException nf) {
+                                    System.out.println("Solo se aceptan numeros.");
+                                    continue;
+                                }
 
+                        rep.add(new RPreliminar(n1,p,m,c,idc,s));
+                        System.out.println("RPreliminar agregado satisfactoriamente");
                     }
                     break;
+
                     case 2: {
                         while (true) {
                             System.out.println("MODIFICA\nElige una opcion.\n1. Busca por nombre completo.\n2. Busca por ID.\n3. Regresar.");
