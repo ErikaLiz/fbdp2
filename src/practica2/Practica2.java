@@ -66,7 +66,31 @@ public class Practica2 {
                 opt = sc.nextInt();
                 switch (opt) {
                     case 1: {
-                        //IMPLEMENTAR
+                        System.out.println("Favor de llenar el siguiente formulario para agregar tu representante");
+                            System.out.println("Cual es el nombre sin apellidos del representante ");
+                                n = sc.nextLine();
+                         if(!esNumero(n)){
+                             System.out.println("No se aceptan numeros");
+                         }else{
+                            System.out.println("Apellido Paterno del representante");
+                            p = sc.nextLine();}
+                            
+                            System.out.println("Apellido Materno del representante");
+                            m = sc.nextLine();
+                            System.out.println("Calidad del represetante");
+                            c = sc.nextLine();
+                            System.out.println("Identificador de casilla");
+                            idc = sc.nextInt();
+                            for(Casilla cas : casillas){
+                            if(cas.getId()==idc){
+                               System.out.println("Seccion");
+                                s = sc.nextInt();
+                                 
+                            }
+                                }
+                             System.out.println("No existe la casilla");
+                            rep.add(new RPreliminar(n,p,m,c,idc,s));
+
                     }
                     break;
                     case 2: {
@@ -246,6 +270,20 @@ public class Practica2 {
             }
         }
         return null;
+    }
+    
+        public static boolean esNumero(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException e) {
+            resultado = false;
+        }
+
+        return resultado;
     }
 
 }
