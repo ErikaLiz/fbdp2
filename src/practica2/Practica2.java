@@ -230,11 +230,59 @@ public class Practica2 {
                         }
 
                     }
-                    break;
-                    case 3: {
-                        //IMPLEMENTAR
+                    break;case 3: {
+                    while (true) {
+                            System.out.println("MODIFICA\nElige una opcion.\n1. Busca por nombre completo.\n2. Busca por ID.\n3. Regresar.");
+                            try {
+                                opt = sc.nextInt();
+                            } catch (NumberFormatException nf) {
+                                System.out.println("Solo se aceptan numeros.");
+                                continue;
+                            }
+                            if (opt >= 3) {
+                                break;
+                            }
+                            RPreliminar rp = null;
+                            int ide = -1;
+                            if (opt == 1) {
+                                System.out.println("Introduce el nombre completo :");
+                                String nombre = sc2.nextLine();
+                                rp = Practica02Datos.Busca(rep, nombre);
+                            }
+                            if (opt == 2) {
+                                try {
+                                    System.out.println("Introduce el ID :");
+                                    ide = sc.nextInt();
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Solo caracteres numericos.");
+                                    continue;
+                                }
+                                rp = Practica02Datos.BuscaId(rep, ide);
+                            }
+                            if (rp == null) {
+                                System.out.println("Representante Preliminar no encontrado.");
+                                continue;
+                            }
+                            RPreliminar bk = rp;
+                            rep.remove(rp);
+                            while (true) {
+                                System.out.println("Estas a punto de eliminar un representante. Si estas seguro escribe S");
+                                c = sc.nextLine();
+                                if (esNumero(c)){
+                                    System.out.println("Verifique que el nombre no tenga un caracter numerico");
+                                    break;                                    
+                                }else if(c.equals(t)){    
+                                    rep.remove(rp.getId());
+                                    System.out.println("El representante se elimino correctamente");
+                                }
+
+                            }
+
+                        }    
+                        
                     }
                     break;
+                        
                     case 4: {
                         bw.close();
                         System.out.println("Adios!");
