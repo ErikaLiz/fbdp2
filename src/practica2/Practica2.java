@@ -62,6 +62,7 @@ public class Practica2 {
 
             int opt,idc, s;
             String n1, p,m,c;
+            String t= "S";
             
             while (true) {
                 System.out.println("Elige una opcion:\n1. Captura.\n2. Modifica.\n3. Elimina.\n4. Salir.");
@@ -113,6 +114,11 @@ public class Practica2 {
                                     System.out.println("Solo se aceptan numeros.");
                                     continue;
                                 }
+                                    if(rep.size() == 0){
+                                        id = 0;
+                                     } else{
+                                        id = rep.getLast().getId() + 1;
+                                     }
 
                         rep.add(new RPreliminar(n1,p,m,c,idc,s));
                         System.out.println("RPreliminar agregado satisfactoriamente");
