@@ -114,7 +114,7 @@ public class RPreliminar implements Comparable {
         }
     }
 
-    private int id=10;
+    private int id;
     private Nombre nombre;
     private String c_repr;
     private int id_casilla;
@@ -131,8 +131,8 @@ public class RPreliminar implements Comparable {
      * @param idc identificador de casilla.
      * @param s seccion.
      */
-    public RPreliminar(/*int id,*/ String n, String p, String m, String c, int idc, int s) {
-        this.id = id++;
+    public RPreliminar(int id, String n, String p, String m, String c, int idc, int s) {
+        this.id = id;
         this.nombre = new Nombre(n, p, m);
         this.c_repr = c;
         this.id_casilla = idc;
